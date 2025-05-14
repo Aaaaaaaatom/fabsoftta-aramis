@@ -1,0 +1,35 @@
+@startuml namingfor
+package br.univille.projfabsofttarefas.entity {
+    class Usuario {
+        - long id
+        - String nome
+        - String email
+        + long getId()
+        + void setId(long id)
+        + String getNome()
+        + void setNome(String nome)
+        + String getEmail()
+        + void setEmail(String email)
+    }
+
+    class Tarefa {
+        - long id
+        - String titulo
+        - String descricao
+        - LocalDate dataTermino
+        - boolean concluida
+        + long getId()
+        + void setId(long id)
+        + String getTitulo()
+        + void setTitulo(String titulo)
+        + String getDescricao()
+        + void setDescricao(String descricao)
+        + LocalDate getDataTermino()
+        + void setDataTermino(LocalDate dataTermino)
+        + boolean isConcluida()
+        + void setConcluida(boolean concluida)
+    }
+
+    Usuario "1" *-- "0..*" Tarefa
+}
+@enduml

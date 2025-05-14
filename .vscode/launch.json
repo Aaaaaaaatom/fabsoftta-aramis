@@ -1,0 +1,14 @@
+{
+    "configurations": [
+    {
+    "type": "java",
+    "name": "Spring Boot-ProjfabsofttarefasApplication",
+    "request": "launch",
+    "cwd": "${workspaceFolder}",
+    "mainClass": "br.univille.projfabsofttarefas.ProjfabsofttarefasApplication",
+    "projectName": "projfabsofttarefas",
+    "args": "",
+    "envFile": "${workspaceFolder}/.env"
+    }
+    ]
+    }
