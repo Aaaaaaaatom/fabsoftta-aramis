@@ -1,0 +1,28 @@
+### GET todos os usuários
+GET http://localhost:8080/api/usuarios
+
+### GET usuario por ID
+GET http://localhost:8080/api/usuarios/1
+
+### CREATE usuario
+POST http://localhost:8080/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Maria Souza",
+  "email": "maria@email.com",
+  "senha": "senha123"
+}
+
+### UPDATE usuario
+PUT http://localhost:8080/api/usuarios/1
+Content-Type: application/json
+
+{
+  "nome": "Maria Souza Atualizada",
+  "email": "maria@email.com",
+  "senha": "novaSenha"
+}
+
+### DELETE usuario
+DELETE http://localhost:8080/api/usuarios/1

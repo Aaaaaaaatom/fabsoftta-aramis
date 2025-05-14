@@ -1,0 +1,42 @@
+### GET todas tarefas
+GET http://localhost:8080/api/tarefas
+
+### ID de tarefas
+GET http://localhost:8080/api/tarefas/1
+
+### CREATE minha tarefa
+POST http://localhost:8080/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Fazer relatório",
+  "descricao": "Relatório mensal de vendas",
+  "dataTermino": "2024-06-30",
+  "concluida": false,
+  "usuario": {
+    "id": 1
+  }
+}
+
+### UPDATE tarefa
+PUT http://localhost:8080/api/tarefas/1
+Content-Type: application/json
+
+{
+  "titulo": "Fazer relatório atualizado",
+  "descricao": "Relatório mensal de vendas e despesas",
+  "dataTermino": "2024-07-01",
+  "concluida": true,
+  "usuario": {
+    "id": 1
+  }
+}
+
+### DELETE tarefa
+DELETE http://localhost:8080/api/tarefas/1
+
+### GET tarefas não concluídas
+GET http://localhost:8080/api/tarefas/nao-concluidas
+
+### GET tarefas atrasadas
+GET http://localhost:8080/api/tarefas/atrasadas
