@@ -1,0 +1,107 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>{{ isLoginMode ? 'Entrar' : 'Criar Conta' }}</h1>
+      <p>{{ isLoginMode ? 'Acesse sua conta para gerenciar suas tarefas' : 'Crie sua conta para começar a organizar suas tarefas' }}</p>
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Login Form -->
+    <form *ngIf="isLoginMode" (ngSubmit)="login()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="loginEmail">Usuário</label>
+        <input 
+          type="text" 
+          id="loginEmail" 
+          name="loginEmail"
+          [(ngModel)]="loginData.email" 
+          required 
+          class="form-control"
+          placeholder="Digite seu nome de usuário"
+          [disabled]="isLoading">
+      </div>
+
+      <div class="form-group">
+        <label for="loginSenha">Senha</label>
+        <input 
+          type="password" 
+          id="loginSenha" 
+          name="loginSenha"
+          [(ngModel)]="loginData.senha" 
+          required 
+          class="form-control"
+          placeholder="Digite sua senha"
+          [disabled]="isLoading">
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn btn-primary btn-full"
+        [disabled]="!loginForm.form.valid || isLoading">
+        {{ isLoading ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+
+    <!-- Register Form -->
+    <form *ngIf="!isLoginMode" (ngSubmit)="register()" #registerForm="ngForm">
+      <div class="form-group">
+        <label for="registerNome">Nome Completo</label>
+        <input 
+          type="text" 
+          id="registerNome" 
+          name="registerNome"
+          [(ngModel)]="registerData.nome" 
+          required 
+          class="form-control"
+          placeholder="Digite seu nome completo"
+          [disabled]="isLoading">
+      </div>
+
+      <div class="form-group">
+        <label for="registerEmail">Usuário</label>
+        <input 
+          type="text" 
+          id="registerEmail" 
+          name="registerEmail"
+          [(ngModel)]="registerData.email" 
+          required 
+          class="form-control"
+          placeholder="Digite seu nome de usuário"
+          [disabled]="isLoading">
+      </div>
+
+      <div class="form-group">
+        <label for="registerSenha">Senha</label>
+        <input 
+          type="password" 
+          id="registerSenha" 
+          name="registerSenha"
+          [(ngModel)]="registerData.senha" 
+          required 
+          minlength="6"
+          class="form-control"
+          placeholder="Digite uma senha (mínimo 6 caracteres)"
+          [disabled]="isLoading">
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn btn-primary btn-full"
+        [disabled]="!registerForm.form.valid || isLoading">
+        {{ isLoading ? 'Criando conta...' : 'Criar Conta' }}
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>
+        {{ isLoginMode ? 'Não tem uma conta?' : 'Já tem uma conta?' }}
+        <button type="button" class="link-button" (click)="toggleMode()" [disabled]="isLoading">
+          {{ isLoginMode ? 'Criar conta' : 'Fazer login' }}
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

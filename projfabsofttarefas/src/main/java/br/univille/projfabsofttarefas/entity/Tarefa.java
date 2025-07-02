@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "tarefa")
@@ -17,13 +18,13 @@ public class Tarefa {
 
     private String descricao;
 
-    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataTermino;
 
     private boolean concluida;
 
     @ManyToOne
+    @JsonBackReference
     private Usuario usuario;
 
     public long getId() {

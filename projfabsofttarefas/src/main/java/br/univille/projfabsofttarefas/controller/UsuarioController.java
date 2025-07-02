@@ -56,4 +56,33 @@ public class UsuarioController {
         usuarioService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> login(@RequestBody Usuario loginData) {
+        List<Usuario> usuarios = usuarioService.findAll();
+        Optional<Usuario> usuario = usuarios.stream()
+                .filter(u -> u.getEmail().equals(loginData.getEmail()) && 
+                           u.getSenha().equals(loginData.getSenha()))
+                .findFirst();
+        
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok(usuario.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Usuario> getUsuarioByEmail(@PathVariable String email) {
+        List<Usuario> usuarios = usuarioService.findAll();
+        Optional<Usuario> usuario = usuarios.stream()
+                .filter(u -> u.getEmail().equals(email))
+                .findFirst();
+        
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok(usuario.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
